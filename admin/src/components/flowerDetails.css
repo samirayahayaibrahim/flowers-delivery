@@ -1,0 +1,22 @@
+.flowerDetails{
+    display: flex;
+    padding: 50px;
+}
+.flowerlist{
+    padding-left: 40px;
+    padding-top: 30px;
+}
+.detail{
+    color: red;
+    font-size: 20px;
+    font-weight: 600;
+}
+.list{
+    color: #000;
+    font-weight: 400;
+    padding-left: 5px;
+}
+.delete{
+    font-weight: 800;
+    font-size: 30px;
+}
