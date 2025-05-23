@@ -4,6 +4,8 @@ import { useFlowersContext } from "../hooks/useFlowersContext";
 const FlowerDetails = ({ flower }) => {
     const { dispatch } = useFlowersContext()
 
+    if (!flower) return null;
+
     const handleClick = async() => {
         const response = await fetch("/api/flowerRoutes/" + flower._id, {
             method: 'DELETE'

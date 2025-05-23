@@ -11,6 +11,7 @@ function App() {
     <div className="App">
             <BrowserRouter>
         <AddFlowerRoute />
+        <FlowerDetails />
         <hr/>
         <div className='pages'>
           <Routes>
