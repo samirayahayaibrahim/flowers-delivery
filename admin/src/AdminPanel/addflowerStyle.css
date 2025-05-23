@@ -1,0 +1,154 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.admin{
+    display: flex;
+    margin-right: 20px;
+}
+.nav{
+    padding: 5px;
+    margin-top: 35px;	
+    margin-left: auto;
+}
+.add{
+    padding: 20px;
+}
+h3{
+    color: red;
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+label{
+    width: 200px;
+}
+#name{
+    width: 100%;
+    height: 25px;
+}
+input{
+    margin-bottom: 20px;
+    height: 20px;
+}
+.catprice{
+    display: flex;
+    gap: 10px;
+}
+#price #category{
+    width: 100%;
+    height: 25px;
+}
+#description{
+    width: 100%;
+    height: 80px;
+}
+.submit{
+    justify-self: center;
+    color: white;
+    background-color: black;
+    padding: 5px 5px 5px 5px;
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.image{
+    padding: 40x;
+}
+.admin{
+    display: flex;	
+    padding-bottom: 10px;
+}
+.addflowers{
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: -10px;
+    display: flex;
+}
+.button{
+    margin-left: 30px;
+    cursor: pointer;
+    padding: 2px 1px 2px 1px;
+    border-radius: 8px;
+}
+
+.button:hover{
+    background-color:black;
+    cursor: pointer;
+    transform: rotate(360deg);
+    color: white;
+}
+
+@media screen and (min-width:420){
+.nav{
+    padding: 5px;
+    margin-top: 35px;
+    margin-left: auto;
+}
+.add{
+    padding: 30px;
+}
+h3{
+    font-size: 30px;
+}
+label{
+    width: 200px;
+}
+#name{
+    width: 100%;
+}
+input{
+    margin-bottom: 20px;
+    height: 20px;
+}
+.catprice{
+    display: flex;
+    gap: 50px;
+}
+#price #category{
+    width: 100px;
+    
+}
+#description{
+    width: 100%;
+    height: 80px;
+}
+.submit{
+    justify-self: center;
+    color: white;
+    background-color: black;
+    padding: 10px 20px 10px 20px;
+    border-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.image{
+    padding: 40x;
+}
+.admin{
+    display: flex;
+    padding: 50px;
+}
+.addflower{
+    margin-left: auto;
+    padding-right: 20px;
+    margin-top: 40px;
+    margin-right: 40px;
+}
+.button{
+    margin-left: 30px;
+    cursor: pointer;
+    padding: 8px 12px 8px 12px;
+    border-radius: 8px;
+}
+
+.button:hover{
+    background-color:black;
+    cursor: pointer;
+    transform: rotate(360deg);
+    color: white;
+}
+}
