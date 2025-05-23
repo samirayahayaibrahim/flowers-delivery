@@ -9,7 +9,7 @@ function Home() {
 
     useEffect(() => {
         const fetchFlowers = async () => {
-            const res = await fetch('/api/flowerRoutes/');
+            const res = await fetch('https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/');
             const json = await res.json();
 
             if (res.ok) {

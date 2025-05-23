@@ -2,8 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require("cors");
-const flowerRoutes = require("./routes/flowerRoutes")
-const userRoutes = require("./routes/userRoutes")
+const flowerRoutes = require("https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/")
+const userRoutes = require("https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/")
 const multer = require("multer");
 
 
@@ -28,7 +28,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 
 //route
-app.use('/api/flowerRoutes', flowerRoutes)
+app.use('https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/', flowerRoutes)
 app.use('/api/user', userRoutes)
 
 //connect to mangoDB

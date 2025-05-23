@@ -7,7 +7,7 @@ const FlowerDetails = ({ flower }) => {
     if (!flower) return null;
 
     const handleClick = async() => {
-        const response = await fetch("/api/flowerRoutes/" + flower._id, {
+        const response = await fetch("https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/" + flower._id, {
             method: 'DELETE'
         })
         const json = await response.json()

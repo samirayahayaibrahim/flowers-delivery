@@ -32,7 +32,7 @@ const useAddFlowers = () => {
     formData.append('description', description);
 try{
     const response = await axios.post(
-            "http://localhost:4000/api/flowerRoutes",
+            "https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/",
             formData,
             {
                 headers: { "content-type": "multipart/form-data" },
