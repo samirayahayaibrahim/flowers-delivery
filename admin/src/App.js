@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
-import Navbar from './components/Navbar';
 import AddFlowerRoute from './AdminPanel/addFlowerRoute';
 import FlowerDetails from './components/flowerDetails';
 import AddFlowers from "./AdminPanel/addFlowers"
