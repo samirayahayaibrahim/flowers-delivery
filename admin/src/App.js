@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import AddFlowerRoute from './AdminPanel/addFlowerRoute';
 import FlowerDetails from './components/flowerDetails';
 import AddFlowers from "./AdminPanel/addFlowers"
-
 import './App.css';
 
 function App() {

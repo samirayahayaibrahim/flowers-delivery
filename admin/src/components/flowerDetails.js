@@ -7,7 +7,7 @@ const FlowerDetails = ({ flower }) => {
     if (!flower) return null;
 
     const handleClick = async() => {
-        const response = await fetch("https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/" + flower._id, {
+        const response = await fetch("https://flowers-delivery-backend-jcef.onrender.com" + flower._id, {
             method: 'DELETE'
         })
         const json = await response.json()
@@ -21,7 +21,7 @@ const FlowerDetails = ({ flower }) => {
     return ( 
         <div className="min">
         <div className="flowerDetails">
-                <img src={flower.image} /><span id="delete" className="delete" onClick={handleClick}>-</span> 
+                <img src={flower.image}  alt={flower.name}/><span id="delete" className="delete" onClick={handleClick}>-</span> 
                 <div className="flowerlist">
                     <p className="detail">Name:<span className="list">{flower.name}</span></p>
                     <p className="detail">Category:<span className="list">{flower.category}</span></p>

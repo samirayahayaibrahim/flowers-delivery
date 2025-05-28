@@ -6,7 +6,8 @@ import { useFlowers } from "../hooks/useFlowersContext";
 import addFlowerRoute from "./addFlowerRoute";
 
 const useAddFlowers = () => {
-    const { dispatch } = useFlowersContext
+    const { dispatch } = useFlowersContext();
+    
     const [image, setImage] = useState();
     const [imageError, setImageError] = useState(false)
     const [name, setName] = useState('');
@@ -39,11 +40,12 @@ try{
             }
             );
 
-            const json = await response.json();
+            const json = response.data;
+            // const json = await response.data;
 
-            if (!response.ok) {
-        setError(json.error);
-        setEmptyFields(json.emptyFields)
+            if (response.status !== 200) {
+    setError(json.error || "Upload failed");
+    setEmptyFields(json.emptyFields || []);
     } else  {
         setImage(null);
         setName('');
@@ -65,6 +67,16 @@ try{
     console.log(e.target.files[0])
     setImage(e.target.files[0])
     };
+
+
+
+    useEffect(() => {
+  if (image) {
+    const objectUrl = URL.createObjectURL(image);
+    return () => URL.revokeObjectURL(objectUrl);
+  }
+}, [image]);
+
 
     return (
         <form className="add" onSubmit={submitImage} encType="multipart/form-data">
@@ -95,7 +107,9 @@ try{
                 <div className="submit">
                 <button className="submit">submit</button>
                 </div>
-            {image && <img src={image} alt="Uploaded" />}
+            {image && <img src={URL.createObjectURL(image)} alt="Uploaded Preview" />}
+            
+
         </div>
     </form>
   );
