@@ -61,7 +61,7 @@ const createFlower = async (req, res) => {
         return res.status(400).json({ error: 'Image upload failed or missing' });
         }
     
-    const image = `"https://flowers-delivery-backend-jcef.onrender.com/uploads/"${req.file.filename}` ;
+    const image = `https://flowers-delivery-backend-jcef.onrender.com/uploads/${req.file.filename}` ;
     
     try{
         const flower = await Flower.create({name, image, description, price, category});
