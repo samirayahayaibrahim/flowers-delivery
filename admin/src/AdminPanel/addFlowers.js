@@ -40,8 +40,8 @@ try{
             }
             );
 
-            const json = response.data;
-            // const json = await response.data;
+            // const json = response.data;
+            const json = await response.data;
 
             if (response.status !== 200) {
     setError(json.error || "Upload failed");
