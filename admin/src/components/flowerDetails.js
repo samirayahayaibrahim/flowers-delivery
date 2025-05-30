@@ -21,13 +21,13 @@ const FlowerDetails = ({ flower }) => {
     return ( 
         <div className="min">
         <div className="flowerDetails">
-                <img src={flower.image}  alt={flower.name}/><span id="delete" className="delete" onClick={handleClick}>-</span> 
+                <img className="img" src={flower.image}  alt={flower.name}/><span id="delete" className="delete" onClick={handleClick}>-</span> 
                 <div className="flowerlist">
                     <p className="detail">Name:<span className="list">{flower.name}</span></p>
                     <p className="detail">Category:<span className="list">{flower.category}</span></p>
                     <p className="detail">Price:<span className="list">{formattedPrice}</span></p>
                     <p className="detail">Description:<span className="list">{flower.description}</span></p>
-                    <p className="detail"><span className="list">{flower.createdAt}</span></p>
+                    
                 </div>
             
         </div>
