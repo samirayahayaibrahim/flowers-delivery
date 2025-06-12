@@ -10,13 +10,8 @@ const fs = require("fs")
 
 
 const app = express();
-app.use(cors({
-    origin: 
-        'https://flowers-delivery-backend-jcef.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}
-));
+app.use(cors());
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -62,6 +57,5 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 
     }
 
-   
 })
 
