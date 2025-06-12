@@ -3,8 +3,13 @@
     padding: 20px;
 }
 .flowerlist{
-    padding-left: 20px;
-    padding-top: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-left: 5px;
+    border:2px solid antiquewhite;
+    border-radius: 20px;
+    margin-right: -80px;
+    width: 50%;
 }
 .detail{
     color: red;
@@ -19,11 +24,18 @@
     font-size: 10px;
 }
 .delete{
-    font-weight: 800;
-    font-size: 30px;
-    position: absolute;
-    transform: translateY(-5px);
-    transform: translateX(130px);
+    font-weight: 300;
+    font-size: 20px;
+    border: 1px solid antiquewhite;
+    border-radius: 30px;
+    background-color: antiquewhite;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    margin-top: 5px;
+}
+.del{
+    justify-self: center;
 }
 .img{
     position: relative;
@@ -31,13 +43,13 @@
     height: 150px ;
 }
 
-@media screen and (min-width:400px){
+@media screen and (min-width:450px){
     
 .detail{
     color: red;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .list{
     color: #000;
@@ -46,10 +58,7 @@
     font-size: 14px;
 }
 .delete{
-    font-weight: 800;
-    font-size: 30px;
-    transform: translateY(-5px);
-    transform: translateX(170px);
+    font-weight: 400;
 }
 
 .img{
@@ -62,7 +71,7 @@
 .detail{
     font-size: 20px;
     font-weight: 600;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .list{
     color: #000;
@@ -72,11 +81,8 @@
 }
 .delete{
     font-weight: 800;
-    font-size: 30px;
-    transform: translateY(-5px);
-    transform: translateX(230px);
+ 
 }
-
 .img{
     width: 270px;
     height: 270px ;
@@ -88,6 +94,6 @@
 .detail{
     font-size: 20px;
     font-weight: 600;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 }

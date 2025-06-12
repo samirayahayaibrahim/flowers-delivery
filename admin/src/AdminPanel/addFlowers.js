@@ -109,6 +109,23 @@ try{
                 <div className="submit">
                 <button className="submit">submit</button>
                 </div>
+
+                <label htmlFor="image-upload">
+  <img
+    src={image ? URL.createObjectURL(image) : "public/default-upload-icon.png"}
+    alt="Upload"
+    className="upload-preview"
+  />
+</label>
+{/* <input
+  type="file"
+  id="image-upload"
+  accept="image/*"
+  onChange={onInputChange}
+  required
+  style={{ display: "none" }}
+/> */}
+
             
             
 
