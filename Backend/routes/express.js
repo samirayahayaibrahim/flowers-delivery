@@ -59,3 +59,42 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
 
 })
 
+const upload = require("../config/cloudinary"); // adjust path
+
+router.post("/", upload.single("image"), async (req, res) => {
+  const { name, description, price, category } = req.body;
+
+  let emptyFields = [];
+  if (!name) emptyFields.push("name");
+  if (!description) emptyFields.push("description");
+  if (!price) emptyFields.push("price");
+  if (!category) emptyFields.push("category");
+
+  if (emptyFields.length > 0) {
+    return res.status(400).json({
+      error: "please fill in all the empty space",
+      emptyFields,
+    });
+  }
+
+  if (!req.file || !req.file.path) {
+    return res.status(400).json({ error: "Image upload failed or missing" });
+  }
+
+  const image = req.file.path; // Cloudinary URL
+
+  try {
+    const flower = await Flower.create({
+      name,
+      image,
+      description,
+      price,
+      category,
+    });
+    res.status(200).json(flower);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+

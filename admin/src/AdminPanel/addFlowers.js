@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useFlowersContext } from "../hooks/useFlowersContext";
-import addflowerStyle from "./addflowerStyle.css";
-import { useFlowers } from "../hooks/useFlowersContext";
-import addFlowerRoute from "./addFlowerRoute";
+// import addflowerStyle from "./addflowerStyle.css";
+// import { useFlowers } from "../hooks/useFlowersContext";
+// import addFlowerRoute from "./addFlowerRoute";
 
 const AddFlowers = () => {
     const { dispatch } = useFlowersContext();
@@ -68,8 +68,6 @@ try{
     setImage(e.target.files[0])
     };
 
-
-
     useEffect(() => {
   if (image) {
     const objectUrl = URL.createObjectURL(image);
@@ -112,7 +110,7 @@ try{
 
                 <label htmlFor="image-upload">
   <img
-    src={image ? URL.createObjectURL(image) : "public/default-upload-icon.png"}
+    src={image ? URL.createObjectURL(image) : "images.jpeg"}
     alt="Upload"
     className="upload-preview"
   />
