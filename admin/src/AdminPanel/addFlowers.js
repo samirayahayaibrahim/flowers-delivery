@@ -31,7 +31,9 @@ const AddFlowers = () => {
     formData.append('category', category);
     formData.append('price', price);
     formData.append('description', description);
+    // formData.append('file', files[0])
 try{
+  
     const response = await axios.post(
             "https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/",
             formData,

@@ -1,5 +1,6 @@
 const express = require('express');
-// const upload = require('../config/Cloudinary');
+const multer = require("multer");
+const cloudinary = require('../config/cloudinary')
 const {
     createFlower,
     getFlower,
@@ -8,7 +9,19 @@ const {
     updateFlower
 } = require('../controllers/flowerController')
 
-const upload = require('multer')({ dest: 'uploads/' });
+
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "flowers", // Folder in your Cloudinary account
+    allowed_formats: ["jpg", "png", "jpeg", "webp"],
+  },
+});
+
+const upload = multer({ storage });
+
+
 const router = express.Router()
 
 
