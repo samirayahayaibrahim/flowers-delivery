@@ -80,13 +80,24 @@ try{
         <form className="add" onSubmit={submitImage} encType="multipart/form-data">
                 <div className="addflower">
                 <label>image</label><br/>
-                {imageError ?(
-                    <p>corrupt image</p>
-                ) : (
-                    <input className="image" type="file" accept="image/*" onChange={onInputChange} required />
-                )}
-                <br/>
-                {image && <img src={URL.createObjectURL(image)} alt="Uploaded Preview" style={{ width: "200px", height: "200px", objectFit: "cover" }}/>}
+                
+                <label htmlFor="image-upload">
+  <img
+    src={image ? URL.createObjectURL(image) : "images.jpeg"}
+    alt="Upload"
+    className="upload-preview"
+    style={{ width: "200px", height: "200px", objectFit: "cover" }}
+  />
+</label>
+<input
+  type="file"
+  id="image-upload"
+  accept="image/*"
+  onChange={onInputChange}
+  required
+  style={{ display: "none" }}
+/>
+
                 <br/>
                 
                 <label>Name</label><br/>
@@ -107,22 +118,6 @@ try{
                 <div className="submit">
                 <button className="submit">submit</button>
                 </div>
-
-                <label htmlFor="image-upload">
-  <img
-    src={image ? URL.createObjectURL(image) : "images.jpeg"}
-    alt="Upload"
-    className="upload-preview"
-  />
-</label>
-{/* <input
-  type="file"
-  id="image-upload"
-  accept="image/*"
-  onChange={onInputChange}
-  required
-  style={{ display: "none" }}
-/> */}
 
             
             

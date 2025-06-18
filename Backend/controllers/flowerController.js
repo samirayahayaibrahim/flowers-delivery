@@ -29,89 +29,49 @@ const getFlower = async (req, res) => {
     res.status(200).json(flower)
 }
 
-//create new flower & connected to db
-// const createFlower = async (req, res) => {
-//     console.log('Incoming form data:', req.body);
-//     console.log('Uploaded file info:', req.file);
+// create new flower & connected to db
+const createFlower = async (req, res) => {
+    console.log('Incoming form data:', req.body);
+    console.log('Uploaded file info:', req.file);
 
 
-//     const { name, description, price, category} = req.body
+    const { name, description, price, category} = req.body
 
-//     let emptyFields = []
+    let emptyFields = []
 
-//     if(!name) {
-//         emptyFields.push('name')
-//     }
+    if(!name) {
+        emptyFields.push('name')
+    }
     
-//     if(!description) {
-//         emptyFields.push('description')
-//     }
+    if(!description) {
+        emptyFields.push('description')
+    }
     
-//     if(!price) {
-//         emptyFields.push('price')
-//     }
+    if(!price) {
+        emptyFields.push('price')
+    }
     
-//     if(!category) {
-//         emptyFields.push('category')
-//     }
-//     if(emptyFields.length > 0){
-//         return res.status(400).json({ error: 'please fill in all the empty space', emptyFields})
-//     }
+    if(!category) {
+        emptyFields.push('category')
+    }
+    if(emptyFields.length > 0){
+        return res.status(400).json({ error: 'please fill in all the empty space', emptyFields})
+    }
     
-//     if (!req.file) {
-//         return res.status(400).json({ error: 'Image upload failed or missing' });
-//         }
+    if (!req.file) {
+        return res.status(400).json({ error: 'Image upload failed or missing' });
+        }
     
-//     const image = `https://flowers-delivery-backend-jcef.onrender.com/uploads/${req.file.filename}` ;
+    const image = `https://flowers-delivery-backend-jcef.onrender.com/uploads/${req.file.filename}` ;
     
-//     try{
-//         const flower = await Flower.create({name, image, description, price, category});
-//         res.status(200).json(flower)
-//     } catch (error) {
-//         res.status(400).json({error: error.message})
+    try{
+        const flower = await Flower.create({name, image, description, price, category});
+        res.status(200).json(flower)
+    } catch (error) {
+        res.status(400).json({error: error.message})
 
-//     }
-// }
-
-
-const createFlower =  async (req, res) => {
-  const { name, description, price, category } = req.body;
-
-  let emptyFields = [];
-  if (!name) emptyFields.push("name");
-  if (!description) emptyFields.push("description");
-  if (!price) emptyFields.push("price");
-  if (!category) emptyFields.push("category");
-
-  if (emptyFields.length > 0) {
-    return res.status(400).json({
-      error: "please fill in all the empty space",
-      emptyFields,
-    });
-  }
-
-  if (!req.file || !req.file.path) {
-    return res.status(400).json({ error: "Image upload failed or missing" });
-  }
-
-  const image = req.file.path; // Cloudinary URL
-
-  try {
-    const flower = await Flower.create({
-      name,
-      image,
-      description,
-      price,
-      category,
-    });
-    res.status(200).json(flower);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
-
-
+    }
+}
 
 const deleteFlower = async (req, res) => {
     const { id } = req.params
