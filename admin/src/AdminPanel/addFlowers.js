@@ -260,6 +260,152 @@
 
 
 
+// import { useState } from "react";
+// import axios from "axios";
+// import { useFlowersContext } from "../hooks/useFlowersContext";
+
+// const AddFlowers = () => {
+//   const { dispatch } = useFlowersContext();
+
+//   const [image, setImage] = useState(null);
+//   const [name, setName] = useState("");
+//   const [category, setCategory] = useState("");
+//   const [price, setPrice] = useState("");
+//   const [description, setDescription] = useState("");
+//   const [error, setError] = useState(null);
+//   const [emptyFields, setEmptyFields] = useState([]);
+
+//   const submitImage = async (e) => {
+//     e.preventDefault();
+
+//     const formData = new FormData();
+//     formData.append("image", image);
+//     formData.append("name", name);
+//     formData.append("category", category);
+//     formData.append("price", price);
+//     formData.append("description", description);
+
+//     try {
+//       const response = await axios.post(
+//         "https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/",
+//         formData
+//       );
+
+//       const json = response.data;
+
+//       // Backend validation error?
+//       if (json.error) {
+//         setError(json.error);
+//         setEmptyFields(json.emptyFields || []);
+//         return;
+//       }
+
+//       // Success
+//       dispatch({ type: "CREATE_FLOWER", payload: json });
+
+//       setImage(null);
+//       setName("");
+//       setCategory("");
+//       setPrice("");
+//       setDescription("");
+//       setEmptyFields([]);
+//       setError(null);
+
+//       console.log("New flower added:", json);
+//     } catch (error) {
+//       console.error("Upload error:", error);
+//       setError("Upload failed");
+//     }
+//   };
+
+//   const onInputChange = (e) => {
+//     setImage(e.target.files[0]);
+//   };
+
+//   return (
+//     <form className="add" onSubmit={submitImage} encType="multipart/form-data">
+//       <div className="addflower">
+//         <label>Image</label><br />
+
+//         <label htmlFor="image-upload">
+//           <img
+//             src={image ? URL.createObjectURL(image) : "images.jpeg"}
+//             alt="Upload"
+//             className="upload-preview"
+//             style={{ width: "200px", height: "200px", objectFit: "cover" }}
+//           />
+//         </label>
+
+//         <input
+//           type="file"
+//           id="image-upload"
+//           accept="image/*"
+//           onChange={onInputChange}
+//           required
+//           style={{ display: "none" }}
+//         />
+
+//         <br />
+
+//         <label>Name</label><br />
+//         <input
+//           type="text"
+//           className={emptyFields.includes("name") ? "error" : ""}
+//           onChange={(e) => setName(e.target.value)}
+//           value={name}
+//         />
+
+//         <div className="catprice">
+//           <span>
+//             <label>Category</label><br />
+//             <input
+//               type="text"
+//               className={emptyFields.includes("category") ? "error" : ""}
+//               onChange={(e) => setCategory(e.target.value)}
+//               value={category}
+//             />
+//           </span>
+
+//           <span>
+//             <label>Price</label><br />
+//             <input
+//               type="number"
+//               className={emptyFields.includes("price") ? "error" : ""}
+//               onChange={(e) => setPrice(e.target.value)}
+//               value={price}
+//             />
+//           </span>
+//         </div>
+
+//         <label>Description</label><br />
+//         <input
+//           type="text"
+//           className={emptyFields.includes("description") ? "error" : ""}
+//           onChange={(e) => setDescription(e.target.value)}
+//           value={description}
+//         />
+
+//         <div className="submit">
+//           <button>Submit</button>
+//         </div>
+
+//         {image && (
+//           <img
+//             src={URL.createObjectURL(image)}
+//             alt="Uploaded"
+//             style={{ width: "150px", marginTop: "10px" }}
+//           />
+//         )}
+
+//         {error && <p className="error">{error}</p>}
+//       </div>
+//     </form>
+//   );
+// };
+
+// export default AddFlowers;
+
+
 import { useState } from "react";
 import axios from "axios";
 import { useFlowersContext } from "../hooks/useFlowersContext";
@@ -268,6 +414,7 @@ const AddFlowers = () => {
   const { dispatch } = useFlowersContext();
 
   const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null); // for image preview
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
@@ -275,8 +422,26 @@ const AddFlowers = () => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
+  // Handle image selection and create preview
+  const onInputChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
   const submitImage = async (e) => {
     e.preventDefault();
+
+    // Reset errors
+    setError(null);
+    setEmptyFields([]);
+
+    if (!image) {
+      setError("Please select an image");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("image", image);
@@ -288,12 +453,16 @@ const AddFlowers = () => {
     try {
       const response = await axios.post(
         "https://flowers-delivery-backend-jcef.onrender.com/api/flowerRoutes/",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
 
       const json = response.data;
 
-      // Backend validation error?
       if (json.error) {
         setError(json.error);
         setEmptyFields(json.emptyFields || []);
@@ -303,33 +472,32 @@ const AddFlowers = () => {
       // Success
       dispatch({ type: "CREATE_FLOWER", payload: json });
 
+      // Reset form
       setImage(null);
+      setPreview(null);
       setName("");
       setCategory("");
       setPrice("");
       setDescription("");
-      setEmptyFields([]);
       setError(null);
+      setEmptyFields([]);
 
       console.log("New flower added:", json);
-    } catch (error) {
-      console.error("Upload error:", error);
-      setError("Upload failed");
+    } catch (err) {
+      console.error("Upload error:", err.response ? err.response.data : err);
+      setError(err.response?.data?.error || "Upload failed");
     }
-  };
-
-  const onInputChange = (e) => {
-    setImage(e.target.files[0]);
   };
 
   return (
     <form className="add" onSubmit={submitImage} encType="multipart/form-data">
       <div className="addflower">
-        <label>Image</label><br />
+        <label>Image</label>
+        <br />
 
         <label htmlFor="image-upload">
           <img
-            src={image ? URL.createObjectURL(image) : "images.jpeg"}
+            src={preview || "images.jpeg"}
             alt="Upload"
             className="upload-preview"
             style={{ width: "200px", height: "200px", objectFit: "cover" }}
@@ -347,7 +515,8 @@ const AddFlowers = () => {
 
         <br />
 
-        <label>Name</label><br />
+        <label>Name</label>
+        <br />
         <input
           type="text"
           className={emptyFields.includes("name") ? "error" : ""}
@@ -357,7 +526,8 @@ const AddFlowers = () => {
 
         <div className="catprice">
           <span>
-            <label>Category</label><br />
+            <label>Category</label>
+            <br />
             <input
               type="text"
               className={emptyFields.includes("category") ? "error" : ""}
@@ -367,7 +537,8 @@ const AddFlowers = () => {
           </span>
 
           <span>
-            <label>Price</label><br />
+            <label>Price</label>
+            <br />
             <input
               type="number"
               className={emptyFields.includes("price") ? "error" : ""}
@@ -377,7 +548,8 @@ const AddFlowers = () => {
           </span>
         </div>
 
-        <label>Description</label><br />
+        <label>Description</label>
+        <br />
         <input
           type="text"
           className={emptyFields.includes("description") ? "error" : ""}
@@ -386,16 +558,8 @@ const AddFlowers = () => {
         />
 
         <div className="submit">
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </div>
-
-        {image && (
-          <img
-            src={URL.createObjectURL(image)}
-            alt="Uploaded"
-            style={{ width: "150px", marginTop: "10px" }}
-          />
-        )}
 
         {error && <p className="error">{error}</p>}
       </div>
