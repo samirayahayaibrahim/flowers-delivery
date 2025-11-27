@@ -15,6 +15,10 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+const cloudinary = require("../config/cloudinary");
+console.log("Cloudinary key:", process.env.CLOUDINARY_API_KEY);
+
+
 
 // In-memory storage fo demonstration purpose
 let flowers = [];
