@@ -1,11 +1,11 @@
-# flowers-delivery
+# Flower-delivery
 
-**Description**This is the backend and Admin for the Flowers Delivery application, built using Node.js, Express.js,MongoDB and React. It handles authentication,file uploads, and API endpoints for the frontend,and Admin handles uploading the flower details and reviewing it.
+**Description**This is the backend for the Flower Delivery application, built using Node.js, Express.js, and MongoDB. It handles authentication,file uploads, and API endpoints for the frontend.
 
 
 ##Table of contents                        
 
-1.[project name](Flowers-delivery)
+1.[project name](Flower-delivery)
 
 2.[table content]
 
@@ -25,9 +25,8 @@
 
 ##Overview
 
-The project is build using Node.js providing a backend data from Mongodb and Postman also an frontend for Admin use for uploading information from frontend(ADMIN FOLDER) to MongoDB.it include pages such as:
+The project is build using Node.js providing a backend data from Mongodb and Postman.it include pages such as:
 
-##Backend
 models         # Database models (Mongoose schemas)
 routes         # API routes
 controllers    # Request handling logic
@@ -38,13 +37,6 @@ README.md      # Project documentation
 package.json   # Dependencies and scripts
 Multer         #image uploads
 
-##Admin(frontend)   
-adminpanel     #form for adding new flowers
-component      #contains flower details
-context        #reaps the whole project for saving
-hooks          #hook for flower context
-pages          #for fetching flower detail to display
-
 
 ##feature
 
@@ -53,7 +45,7 @@ Add, update, delete flower products
 Store product images in the uploads folder using Multer
 Fetch product details with categories & prices
 
-**User Authentication**
+**User Authentication***
 Secure JWT-based authentication (Register/Login)
 Password hashing with bcrypt
 Role-based access control (Admin & User)
@@ -70,18 +62,15 @@ MongoDB integration via Mongoose
 ##setup instruction##
 
 1.**clone repository**:
-git clone 
+git clone https://github.com/flower-delivery/flower-website-backend.git
 
 2.**Navigate to the project directory**:
-cd flowers-flowers-delivery
+cd flower-website-backend
 
 3.**Install dependencies:**:
 npm install
 
 ##Folder Details
-
-##backend
-
 1. Models (models/ folder)
 
 Contains Mongoose schemas for database collections
@@ -104,28 +93,6 @@ uploading images for flowers and user profile pictures.
 Stores uploaded images for flowers and user profile pictures.
 
 
-##Admin
-
-1. Addflowers  (Admin panel folder)
-
-added flower details from the frontend to the backend api
-
-2. AddflowerRoutes (Admin panel folder)
-
-router that navigates from addflower page to the flower details
-
-3. flower details (Components folder)
-
-contain flower details e.g image,name,category and price
-
-4. flower context (hooks folder)
-
-wraps the whole content/body of the project
-
-5. home (pages folder)
-
-fetch flowers details from the backend to display on server
-
 
 ##license##     
 
@@ -145,8 +112,8 @@ the project is licensed under MIT LICENSE
 **https://github.com/samirayahayaibrahim** 
 
 ##Render
-**https://flowers-delivery-amin.onrender.com/**
+**https://flower-delivery-1-pd16.onrender.com/api/flowerRoutes**
 
 ##Loom
-****
+**https://www.loom.com/share/8bc8691c96fc42db949e220dbe2ec19d?sid=1730916c-3e5a-473c-a110-72e638986cab**
 
